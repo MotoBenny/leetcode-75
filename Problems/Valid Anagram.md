@@ -86,15 +86,46 @@ An **Anagram** is a word or phrase formed by rearranging the letters of a diff
 ### Code
 
 ```Python
-
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+        
+        # if strings are not of equal length they cannot possibly be anagrams
+        if len(s) != len(t):
+            return False
+        # creating our empty dicts (hashmaps)
+        countS, countT = {},{}
+        
+        # populating the hashmaps with key value pairs for each character in the input string
+        for i in range(len(s)): # we can use either string for len here since we've verified the lengths match.
+            # countS is our empty dict (hashmap), S is our input string, i is our for loop index
+            countS[s[i]] = 1 + countS.get(s[i],0)
+            countT[t[i]] = 1 + countT.get(t[i],0)
+            
+        for c in countS: # for character in now populated countS dict. 
+            # if countS[c] != countT[c]: <<< careful here! countT[c] will throw a key Error! since the key does not exist. 
+            if countS[c] != countT.get(c, 0): # if the character in dict S does not match dict T return false > not anagrams
+                return False
+            
+        # if we dont return False from any of the previous checks, we know we have an anagram! return True
+        return True
 
 ```
+### BONUS CODE
+```python
+class Solution:
+	def isAnagram(self, s: str, t: str) -> bool:
+```
+
+### Algorithm Explanation
+
+We again check if the lengths are the same
 
 ### BigO Time
-
+O(n) where N is the number of characters in both the strings, otherwise visible as O(s + t)
 
 ### BigO Space
-
+ O(s + t) This solution is slightly more memory intensive due to the use of the Hashmaps
+This method is memory expensive since we create two hashmaps and must itterate through them.
 
 ### Design choices and why
 
@@ -120,3 +151,7 @@ So in this implimentation we build out two hashmaps (dictionaries) one for each 
 
 
 ### test cases
+
+I would immediately test to verify inputs, if either of the inputs are not of type string we can stop the function
+
+Type handling? - How should we handle numbers within the string? 

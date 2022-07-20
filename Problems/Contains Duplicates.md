@@ -48,6 +48,7 @@ For this method our time complexity is O(n) we are adding each unique value to t
 
 ### BigO Space
 
+Space is O(n) where N is the size of the input data, or rather the size before we hit a duplicate, since our memory space is dependant on creating the set. 
 
 ### Design choices and why
 

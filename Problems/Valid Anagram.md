@@ -47,9 +47,13 @@ def isAnagram(self, s: str, t: str) -> bool:
 
 ### BigO Time
 
+This method is O(n) time where N is the number of characters in the input strings.
+
 
 ### BigO Space
 
+This method is also O(n) space, and it is fairly memory light, since we are not creating any 
+the downside of this is the extra memory space required to perform the sort. depending on the sorting method happening in the background this can be ineffiecent. 
 
 ### Design choices and why
 
